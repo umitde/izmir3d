@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog ve 3D Baskı Rehberi | İzmir3D</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #fff; }
+        .nav-glass { background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid #222; }
+        .brand-bar { font-size: 10px; letter-spacing: 2px; border-bottom: 1px solid #1a1a1a; }
+        .blog-card { background: #0a0a0a; border: 1px solid #1a1a1a; transition: all 0.3s ease; }
+        .blog-card:hover { border-color: #444; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="brand-bar py-2 text-center text-gray-500 font-bold uppercase nav-glass">
+        <div class="max-w-6xl mx-auto px-6 flex justify-center gap-8">
+            <a href="#" class="hover:text-white transition">VULCA WORKS</a>
+            <a href="index.html" class="text-white border-b border-white">İZMİR 3D</a>
+            <a href="#" class="hover:text-white transition">URETIM 3D</a>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html"><img src="logo.png" alt="İzmir3D" class="h-10"></a>
+            <nav class="hidden md:flex gap-8 text-sm font-medium tracking-widest uppercase">
+                <a href="index.html#home" class="hover:text-gray-400 transition">Ana Sayfa</a>
+                <a href="index.html#about" class="hover:text-gray-400 transition">Hakkımızda</a>
+                <a href="blog.html" class="text-white border-b border-white transition">Blog</a>
+                <a href="index.html#contact" class="hover:text-gray-400 transition">İletişim</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-6 py-20 text-center border-b border-white/5">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter uppercase mb-4">Üretim Rehberi</h1>
+        <p class="text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto">İzmir'de 3D baskı teknolojileri, filament rehberleri ve yerel üretim çözümleri.</p>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <a href="bloglar/gaziemir-3d-baski.html" class="blog-card p-8 flex flex-col justify-between group">
+                <div>
+                    <div class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Bölgesel Hizmet</div>
+                    <h2 class="text-xl font-bold text-white mb-3 leading-snug">Gaziemir 3D Baskı ve Hızlı Prototipleme Merkezi</h2>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed line-clamp-3">
+                        Gaziemir bölgesindeki endüstriyel firmalar ve hobi projeleri için yüksek hassasiyetli FDM ve SLA baskı çözümlerimizle zaman kazanın.
+                    </p>
+                </div>
+                <div class="mt-8 text-xs font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-gray-300 transition">
+                    Makaleyi Oku <span class="group-hover:translate-x-2 transition-transform">→</span>
+                </div>
+            </a>
+
+            <a href="bloglar/izmir-filament-secimi.html" class="blog-card p-8 flex flex-col justify-between group">
+                <div>
+                    <div class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Teknik Bilgi</div>
+                    <h2 class="text-xl font-bold text-white mb-3 leading-snug">İzmir İkliminde Filament Seçimi: PLA mı PETG mi?</h2>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed line-clamp-3">
+                        Sıcak ve nemli havalarda 3D baskı alırken malzemenin dayanıklılığını nasıl korursunuz? Doğru filament seçimi hayat kurtarır.
+                    </p>
+                </div>
+                <div class="mt-8 text-xs font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-gray-300 transition">
+                    Makaleyi Oku <span class="group-hover:translate-x-2 transition-transform">→</span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="py-10 text-center text-[10px] text-gray-600 tracking-widest uppercase border-t border-white/5 mt-10">
+        &copy; 2026 İZMİR3D | VULCA WORKS EKOSİSTEMİ
+    </footer>
+
+</body>
+</html>
