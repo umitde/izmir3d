@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İzmir3D | Endüstriyel 3D Üretim Merkezi</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -17,7 +17,7 @@
 <body class="antialiased">
 
     <div class="brand-bar py-2 text-center text-gray-500 font-bold uppercase nav-glass">
-        <div class="max-w-6xl mx-auto px-6 flex justify-center gap-8">
+        <div class="max-w-6xl mx-auto px-6 flex justify-center gap-8 text-[9px] md:text-[11px]">
             <a href="#" class="hover:text-white transition">VULCA WORKS</a>
             <a href="#" class="text-white border-b border-white">İZMİR 3D</a>
             <a href="#" class="hover:text-white transition">URETIM 3D</a>
@@ -26,71 +26,56 @@
 
     <header class="sticky top-0 z-50 nav-glass border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <img src="logo.png" alt="İzmir3D" class="h-10">
+            <img src="img/logo.png" alt="İzmir3D" class="h-8 md:h-10">
             <nav class="hidden md:flex gap-8 text-sm font-medium tracking-widest uppercase">
                 <a href="#home" class="hover:text-gray-400 transition">Ana Sayfa</a>
                 <a href="#about" class="hover:text-gray-400 transition">Hakkımızda</a>
                 <a href="#gallery" class="hover:text-gray-400 transition">Galeri</a>
-                <a href="blog.html" class="hover:text-gray-400 transition text-yellow-500">Blog</a>
                 <a href="#contact" class="hover:text-gray-400 transition">İletişim</a>
             </nav>
         </div>
     </header>
 
-    <section id="home" class="relative h-[90vh] flex items-center justify-center overflow-hidden border-b border-white/10">
+    <section id="home" class="relative h-[85vh] flex items-center justify-center overflow-hidden border-b border-white/10">
         <video autoplay muted loop playsinline class="hero-video">
             <source src="img/video.mov" type="video/quicktime">
-            <source src="img/video.mp4" type="video/mp4">
+            <source src="img/video.mov" type="video/mp4">
+            Tarayıcınız video etiketini desteklemiyor.
         </video>
         <div class="text-center z-10 px-6">
             <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter mb-4 uppercase italic">Dijital Zanaat</h1>
-            <p class="text-lg md:text-2xl text-gray-300 font-light max-w-2xl mx-auto mb-10 tracking-wide">İzmir'in en gelişmiş 3D baskı ve prototipleme laboratuvarı.</p>
+            <p class="text-lg md:text-2xl text-gray-300 font-light max-w-2xl mx-auto mb-10 tracking-wide">Endüstriyel standartlarda 3D baskı laboratuvarı.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://shopier.com/izmir3d" class="bg-white text-black px-10 py-4 font-bold uppercase text-sm hover:bg-gray-200 transition">Mağazayı Gez</a>
-                <a href="#contact" class="border border-white px-10 py-4 font-bold uppercase text-sm hover:bg-white hover:text-black transition">Teklif Al</a>
+                <a href="https://shopier.com/izmir3d" class="bg-white text-black px-10 py-4 font-bold uppercase text-sm hover:bg-yellow-400 transition duration-300">Mağazayı Gez</a>
+                <a href="#contact" class="border border-white px-10 py-4 font-bold uppercase text-sm hover:bg-white hover:text-black transition duration-300">Teklif Al</a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="max-w-5xl mx-auto px-6 py-24 text-center">
-        <h2 class="text-3xl font-bold uppercase tracking-widest mb-8">Üretimin Geleceği</h2>
-        <p class="text-xl text-gray-400 leading-relaxed font-light italic">
-            "İzmir3D, yüksek hassasiyetli FDM ve SLA teknolojileri ile fikirlerinizi fiziksel gerçekliğe dönüştürür. Gaziemir'den Karabağlar'a, İzmir'in her noktasına endüstriyel standartlarda çözüm sunuyoruz."
-        </p>
-    </section>
-
-    <section id="gallery" class="max-w-7xl mx-auto px-6 py-12">
+    <section id="gallery" class="max-w-7xl mx-auto px-6 py-20">
+        <h2 class="text-center text-2xl font-bold uppercase tracking-[0.3em] mb-16 text-gray-500">Üretim Portfolyosu</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/1.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/2.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/3.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/4.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/5.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/6.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/7.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/8.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
+            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/1.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-700"></div>
+            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/2.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-700"></div>
+            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/3.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-700"></div>
+            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/4.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-700"></div>
+            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/5.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-700"></div>
+            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/6.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-700"></div>
+            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/7.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-700"></div>
+            <div class="aspect-square bg-zinc-900 border border-white/5 overflow-hidden"><img src="img/8.jpeg" class="w-full h-full object-cover hover:scale-110 transition duration-700"></div>
         </div>
     </section>
 
-    <section id="contact" class="bg-zinc-950 py-24 border-t border-white/5">
+    <footer id="contact" class="bg-zinc-950 py-20 border-t border-white/5">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold uppercase mb-8 italic">Bize Ulaşın</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
-                <div class="space-y-4">
-                    <p class="text-gray-400 font-light">Özel projeleriniz, toplu üretim veya teknik destek için 7/24 yanınızdayız.</p>
-                    <p class="text-2xl font-bold">info@izmir3d.com</p>
-                    <a href="https://wa.me/numaran" class="inline-block text-green-500 font-bold uppercase tracking-tighter">WhatsApp Üretim Hattı →</a>
-                </div>
-                <div class="text-sm text-gray-600 space-y-2">
-                    <p class="font-bold text-gray-400 uppercase tracking-widest">Hizmet Bölgeleri (İzmir SEO)</p>
-                    <p>Gaziemir 3D Baskı, Karabağlar Prototip, Buca Lazer Kesim, Bornova Filament Satışı, İzmir Hızlı İmalat.</p>
-                </div>
+            <img src="img/icon.png" class="h-12 mx-auto mb-8 opacity-50">
+            <h2 class="text-3xl font-bold uppercase mb-4 italic tracking-tighter">Projeyi Başlatın</h2>
+            <p class="text-gray-500 mb-8 font-light italic">Endüstriyel çözümler ve hızlı prototipleme için İzmir'in merkezindeyiz.</p>
+            <div class="text-xl font-bold mb-4 tracking-widest text-yellow-500">INFO@IZMIR3D.COM</div>
+            <div class="text-[10px] text-gray-700 tracking-[0.4em] uppercase mt-12">
+                &copy; 2026 İZMİR3D | VULCA WORKS EKOSİSTEMİ
             </div>
         </div>
-    </section>
-
-    <footer class="py-10 text-center text-[10px] text-gray-700 tracking-widest uppercase border-t border-white/5">
-        &copy; 2026 İZMİR3D | VULCA WORKS EKOSİSTEMİ
     </footer>
 
 </body>
