@@ -3,98 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İzmir3D | Uçtan Uca Endüstriyel Üretim</title>
+    <title>İzmir3D | Endüstriyel Üretim</title>
     <link rel="icon" type="image/png" href="img/favicon negatif.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; }
+        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; overflow-x: hidden; }
         .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; z-index: -1; }
-        .nav-glass { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); }
-        .brand-bar { font-size: 10px; letter-spacing: 2px; border-bottom: 1px solid #1a1a1a; }
+        .nav-glass { background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(12px); }
+        
+        /* Kayan Yazı (Ticker) */
+        .ticker-wrap { width: 100%; overflow: hidden; background-color: #111; border-bottom: 1px solid #222; }
+        .ticker { display: inline-block; white-space: nowrap; animation: ticker 20s linear infinite; font-size: 11px; padding: 6px 0; color: #ccc; letter-spacing: 1px;}
+        @keyframes ticker { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
+        /* Hover ile Açılan Marka Barı */
+        .brand-bar { border-bottom: 1px solid #1a1a1a; }
+        .brand-item { display: flex; items-center; gap: 8px; cursor: pointer; }
+        .brand-text { max-width: 0; opacity: 0; overflow: hidden; transition: all 0.4s ease; white-space: nowrap; font-size: 10px; font-weight: bold; letter-spacing: 2px; }
+        .brand-item:hover .brand-text { max-width: 150px; opacity: 1; }
+        .brand-icon { width: 16px; height: 16px; object-fit: contain; opacity: 0.5; transition: 0.3s; }
+        .brand-item:hover .brand-icon { opacity: 1; }
+        .brand-active .brand-icon { opacity: 1; }
+        .brand-active .brand-text { max-width: 150px; opacity: 1; }
+
+        /* Yandan Açılan Mobil Menü */
+        #side-menu { transform: translateX(-100%); transition: transform 0.3s ease-in-out; }
+        #side-menu.open { transform: translateX(0); }
+        #overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        #overlay.open { opacity: 1; pointer-events: auto; }
     </style>
 </head>
 <body class="antialiased">
 
-    <div class="brand-bar py-2 text-center text-gray-500 font-bold uppercase nav-glass">
-        <div class="max-w-6xl mx-auto px-6 flex justify-center gap-8 text-[9px] md:text-[11px]">
-            <a href="#" class="hover:text-white transition duration-300">VULCA WORKS</a>
-            <a href="index.html" class="text-white border-b border-white">İZMİR 3D</a>
-            <a href="#" class="hover:text-white transition duration-300">URETIM 3D</a>
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span class="text-yellow-500 font-bold">ÖĞRENCİ KAMPÜSÜ:</span> Ömür boyu limitsiz öğrenci erişimi fırsatını kaçırmayın! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            BAMBU LAB FİLOSU İLE AYNI GÜN TESLİMAT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="text-yellow-500 font-bold">İNDİRİM:</span> İLK SİPARİŞİNİZE ÖZEL %15 İNDİRİM
         </div>
     </div>
 
-    <header class="sticky top-0 z-50 nav-glass border-b border-white/10 relative">
+    <div class="brand-bar py-2 nav-glass flex justify-center gap-10">
+        <a href="#" class="brand-item">
+            <img src="img/icon negatif.png" class="brand-icon" alt="Vulca">
+            <span class="brand-text text-gray-500 hover:text-white">VULCA WORKS</span>
+        </a>
+        <a href="index.html" class="brand-item brand-active">
+            <img src="img/favicon negatif.png" class="brand-icon" alt="İzmir3D">
+            <span class="brand-text text-white">İZMİR 3D</span>
+        </a>
+        <a href="#" class="brand-item">
+            <img src="img/icon negatif.png" class="brand-icon" alt="Üretim">
+            <span class="brand-text text-gray-500 hover:text-white">URETIM 3D</span>
+        </a>
+    </div>
+
+    <header class="sticky top-0 z-40 nav-glass border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html"><img src="img/logo negatif.png" alt="İzmir3D" class="h-8 md:h-10"></a>
+            <div class="flex items-center gap-4">
+                <button id="menu-open" class="md:hidden text-white focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                <a href="index.html"><img src="img/logo negatif.png" alt="İzmir3D" class="h-7 md:h-9"></a>
+            </div>
             
             <nav class="hidden md:flex gap-8 text-sm font-medium tracking-widest uppercase">
-                <a href="index.html" class="text-white border-b border-white">Ana Sayfa</a>
-                <a href="hizmetlerimiz.html" class="hover:text-gray-400 transition">Hizmetlerimiz</a>
+                <a href="index.html" class="text-white border-b border-white pb-1">Ana Sayfa</a>
+                <a href="hizmetlerimiz.html" class="hover:text-gray-400 transition">Hizmetler</a>
                 <a href="hakkimizda.html" class="hover:text-gray-400 transition">Hakkımızda</a>
                 <a href="blog.html" class="hover:text-gray-400 transition text-yellow-500">Blog</a>
                 <a href="iletisim.html" class="hover:text-gray-400 transition">İletişim</a>
             </nav>
-
-            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-black/95 border-b border-white/10 flex flex-col items-center py-6 gap-6 text-sm font-medium tracking-widest uppercase shadow-2xl">
-            <a href="index.html" class="text-white">Ana Sayfa</a>
-            <a href="hizmetlerimiz.html" class="text-gray-400">Hizmetlerimiz</a>
-            <a href="hakkimizda.html" class="text-gray-400">Hakkımızda</a>
-            <a href="blog.html" class="text-yellow-500">Blog</a>
-            <a href="iletisim.html" class="text-gray-400">İletişim</a>
         </div>
     </header>
 
-    <section class="relative h-[85vh] flex items-center justify-center overflow-hidden border-b border-white/10">
+    <div id="overlay" class="fixed inset-0 bg-black/80 z-50 backdrop-blur-sm"></div>
+    <div id="side-menu" class="fixed top-0 left-0 h-full w-4/5 max-w-sm bg-[#0a0a0a] z-50 border-r border-white/10 flex flex-col">
+        <div class="p-6 border-b border-white/10 flex justify-between items-center">
+            <img src="img/logo negatif.png" class="h-6">
+            <button id="menu-close" class="text-gray-400 hover:text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col p-6 gap-6 text-sm font-bold tracking-widest uppercase">
+            <a href="index.html" class="text-white border-b border-white/10 pb-4">Ana Sayfa ></a>
+            <a href="hizmetlerimiz.html" class="text-gray-400 border-b border-white/10 pb-4">Hizmetlerimiz ></a>
+            <a href="hakkimizda.html" class="text-gray-400 border-b border-white/10 pb-4">Hakkımızda ></a>
+            <a href="blog.html" class="text-yellow-500 border-b border-white/10 pb-4">Blog & Rehber ></a>
+            <a href="iletisim.html" class="text-gray-400">İletişim ></a>
+        </div>
+    </div>
+
+    <section class="relative h-[80vh] flex items-center justify-center overflow-hidden border-b border-white/10">
         <video autoplay muted loop playsinline class="hero-video">
             <source src="video.mp4" type="video/mp4">
         </video>
         <div class="text-center z-10 px-6">
             <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter mb-4 uppercase italic drop-shadow-2xl">Fikri Gerçeğe Dönüştür</h1>
-            <p class="text-lg md:text-2xl text-gray-300 font-light max-w-3xl mx-auto mb-10 tracking-wide">Yüksek hassasiyetli prototipleme ve seri üretim için İzmir'in merkezindeyiz.</p>
+            <p class="text-lg md:text-2xl text-gray-300 font-light max-w-3xl mx-auto mb-10 tracking-wide">Yüksek hassasiyetli prototipleme ve seri üretim merkezi.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="hizmetlerimiz.html" class="bg-white text-black px-10 py-4 font-bold uppercase text-sm hover:bg-gray-200 transition duration-300">Neler Yapıyoruz?</a>
-                <a href="iletisim.html" class="border border-white px-10 py-4 font-bold uppercase text-sm hover:bg-white hover:text-black transition duration-300">Hemen Teklif Al</a>
+                <a href="hizmetlerimiz.html" class="bg-yellow-500 text-black px-12 py-4 font-bold uppercase text-sm hover:bg-white transition duration-300">Neler Yapıyoruz?</a>
             </div>
         </div>
     </section>
 
-    <section class="max-w-5xl mx-auto px-6 py-24 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold uppercase tracking-[0.2em] mb-8 text-gray-400">Sınırları Kaldırın</h2>
-        <p class="text-lg md:text-xl text-gray-400 leading-relaxed font-light italic max-w-4xl mx-auto">
-            "Sadece parça basmıyoruz; tasarım aşamasından son ürüne kadar mühendislik desteği sağlıyoruz. FDM ve SLA teknolojilerimizle hayalinizdeki ürünü saatler içinde masanıza getiriyoruz."
-        </p>
+    <section class="max-w-7xl mx-auto px-6 py-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl md:text-5xl font-bold uppercase italic tracking-tighter mb-6">Mühendislik<br>Odaklı Üretim</h2>
+                <p class="text-gray-400 font-light leading-relaxed mb-8">
+                    Tasarım aşamasından son kullanıcı ürününe kadar her adımı optimize ediyoruz. Gelişmiş donanım parkurumuz ve deneyimli ekibimizle, standartların ötesinde bir üretim deneyimi sunuyoruz.
+                </p>
+                <a href="hakkimizda.html" class="text-yellow-500 font-bold uppercase tracking-widest text-xs border-b border-yellow-500 pb-1">Bizi Yakından Tanıyın →</a>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <img src="img/1.jpeg" class="w-full h-full object-cover rounded-sm">
+                <img src="img/2.jpeg" class="w-full h-full object-cover rounded-sm mt-8">
+            </div>
+        </div>
     </section>
 
-    <footer class="bg-zinc-950 py-20 border-t border-white/5">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <img src="img/icon negatif.png" class="h-12 mx-auto mb-8 opacity-60">
-            <h2 class="text-2xl md:text-3xl font-bold uppercase mb-4 italic tracking-tighter">Projeyi Başlatın</h2>
-            <p class="text-gray-500 mb-8 font-light text-sm md:text-base px-4">
-                Gaziemir, Karabağlar, Bornova ve İzmir'in her noktasına profesyonel üretim desteği.
-            </p>
-            <div class="text-xl font-bold mb-4 tracking-widest text-white">INFO@IZMIR3D.COM</div>
-            <div class="text-[10px] text-gray-600 tracking-[0.4em] uppercase mt-12">
-                &copy; 2026 İZMİR3D | VULCA WORKS EKOSİSTEMİ
+    <section class="bg-zinc-950 py-24 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <img src="img/3.jpeg" class="w-full aspect-video object-cover rounded-sm grayscale hover:grayscale-0 transition duration-500">
+            <img src="img/4.jpeg" class="w-full aspect-video object-cover rounded-sm grayscale hover:grayscale-0 transition duration-500">
+            <img src="img/5.jpeg" class="w-full aspect-video object-cover rounded-sm grayscale hover:grayscale-0 transition duration-500">
+        </div>
+    </section>
+
+    <footer class="bg-black py-16 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="space-y-6">
+                <img src="img/logo negatif.png" class="h-8">
+                <p class="text-gray-500 text-xs font-light leading-relaxed">İzmir'in öncü 3D baskı, prototipleme ve seri üretim laboratuvarı. Fikirlerinizi endüstriyel kalitede hayata geçiriyoruz.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Kurumsal</h4>
+                <div class="flex flex-col gap-3 text-sm text-gray-500 font-light">
+                    <a href="hakkimizda.html" class="hover:text-white transition">Hakkımızda</a>
+                    <a href="hizmetlerimiz.html" class="hover:text-white transition">Hizmetler & Teknolojiler</a>
+                    <a href="blog.html" class="hover:text-white transition">Blog & Rehber</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Hizmetlerimiz</h4>
+                <div class="flex flex-col gap-3 text-sm text-gray-500 font-light">
+                    <span>FDM 3D Baskı</span>
+                    <span>SLA Reçine Baskı</span>
+                    <span>3D Tasarım & Modelleme</span>
+                    <span>Hızlı Seri Üretim</span>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">İletişim</h4>
+                <div class="flex flex-col gap-3 text-sm text-gray-500 font-light">
+                    <span class="text-yellow-500 font-bold">info@izmir3d.com</span>
+                    <span>İzmir / Türkiye</span>
+                    <a href="iletisim.html" class="mt-4 border border-white/20 text-center py-2 text-white hover:bg-white hover:text-black transition uppercase text-xs font-bold tracking-widest">Bize Ulaşın</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-600 tracking-widest uppercase">
+            <p>&copy; 2026 İZMİR3D | VULCA WORKS EKOSİSTEMİ. TÜM HAKLARI SAKLIDIR.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white">Instagram</a>
+                <a href="#" class="hover:text-white">LinkedIn</a>
             </div>
         </div>
     </footer>
 
     <script>
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
+        const btnOpen = document.getElementById('menu-open');
+        const btnClose = document.getElementById('menu-close');
+        const sideMenu = document.getElementById('side-menu');
+        const overlay = document.getElementById('overlay');
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
+        function toggleMenu() {
+            sideMenu.classList.toggle('open');
+            overlay.classList.toggle('open');
+            document.body.style.overflow = sideMenu.classList.contains('open') ? 'hidden' : '';
+        }
+
+        btnOpen.addEventListener('click', toggleMenu);
+        btnClose.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
     </script>
-
 </body>
 </html>
