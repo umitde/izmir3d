@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hizmetlerimiz | İzmir3D</title>
+    <link rel="icon" type="image/png" href="img/favicon negatif.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; }
+        .nav-glass { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); }
+        .brand-bar { font-size: 10px; letter-spacing: 2px; border-bottom: 1px solid #1a1a1a; }
+        .service-card { background: #0a0a0a; border: 1px solid #1a1a1a; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .service-card:hover { border-color: #444; transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="brand-bar py-2 text-center text-gray-500 font-bold uppercase nav-glass">
+        <div class="max-w-6xl mx-auto px-6 flex justify-center gap-8 text-[9px] md:text-[11px]">
+            <a href="#" class="hover:text-white transition">VULCA WORKS</a>
+            <a href="index.html" class="text-white border-b border-white">İZMİR 3D</a>
+            <a href="#" class="hover:text-white transition">URETIM 3D</a>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-50 nav-glass border-b border-white/10 relative">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html"><img src="img/logo negatif.png" alt="İzmir3D" class="h-8 md:h-10"></a>
+            <nav class="hidden md:flex gap-8 text-sm font-medium tracking-widest uppercase">
+                <a href="index.html" class="hover:text-gray-400 transition">Ana Sayfa</a>
+                <a href="hizmetlerimiz.html" class="text-white border-b border-white">Hizmetlerimiz</a>
+                <a href="hakkimizda.html" class="hover:text-gray-400 transition">Hakkımızda</a>
+                <a href="blog.html" class="hover:text-gray-400 transition text-yellow-500">Blog</a>
+                <a href="iletisim.html" class="hover:text-gray-400 transition">İletişim</a>
+            </nav>
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-black/95 border-b border-white/10 flex flex-col items-center py-8 gap-6 text-sm font-medium tracking-widest uppercase">
+            <a href="index.html" class="text-gray-400">Ana Sayfa</a>
+            <a href="hizmetlerimiz.html" class="text-white">Hizmetlerimiz</a>
+            <a href="hakkimizda.html" class="text-gray-400">Hakkımızda</a>
+            <a href="blog.html" class="text-yellow-500">Blog</a>
+            <a href="iletisim.html" class="text-gray-400">İletişim</a>
+        </div>
+    </header>
+
+    <section class="py-24 text-center border-b border-white/5 bg-gradient-to-b from-zinc-950 to-black">
+        <h1 class="text-4xl md:text-7xl font-extrabold tracking-tighter uppercase italic mb-4">Hizmetlerimiz</h1>
+        <p class="text-gray-500 text-lg md:text-xl font-light max-w-3xl mx-auto px-6">Endüstriyel üretim teknolojileriyle fikirlerinizi teknik mükemmelliğe dönüştürüyoruz.</p>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-6 py-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="service-card p-10 rounded-sm flex flex-col justify-between">
+                <div>
+                    <div class="text-yellow-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-6">Mühendislik</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase tracking-tighter">FDM 3D Baskı</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Endüstriyel termoplastikler (PLA, ABS, PETG, Karbon Fiber) ile dayanıklı yedek parçalar ve fonksiyonel prototipler üretiyoruz.</p>
+                </div>
+                <div class="mt-8 text-xs font-bold uppercase tracking-widest text-white/40">Endüstriyel Sınıf</div>
+            </div>
+
+            <div class="service-card p-10 rounded-sm flex flex-col justify-between">
+                <div>
+                    <div class="text-yellow-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-6">Hassasiyet</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase tracking-tighter">SLA Reçine Baskı</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">25 mikron katman çözünürlüğü ile pürüzsüz yüzeyler. Kuyumculuk, medikal ve yüksek detaylı figür üretimleri için ideal.</p>
+                </div>
+                <div class="mt-8 text-xs font-bold uppercase tracking-widest text-white/40">Mikron Hassasiyeti</div>
+            </div>
+
+            <div class="service-card p-10 rounded-sm flex flex-col justify-between">
+                <div>
+                    <div class="text-yellow-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-6">Tasarım</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase tracking-tighter">3D Modelleme</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Fikirlerinizi ve teknik çizimlerinizi üretime hazır 3D dosyalara dönüştürüyoruz. Tersine mühendislik ve optimizasyon desteği.</p>
+                </div>
+                <div class="mt-8 text-xs font-bold uppercase tracking-widest text-white/40">CAD / CAM Destek</div>
+            </div>
+
+            <div class="service-card p-10 rounded-sm flex flex-col justify-between">
+                <div>
+                    <div class="text-yellow-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-6">Ölçekleme</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase tracking-tighter">Seri Üretim</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Kalıp maliyetlerini ortadan kaldıran, 1000 adete kadar hızlı seri üretim çözümleri. Düşük maliyet, yüksek hız.</p>
+                </div>
+                <div class="mt-8 text-xs font-bold uppercase tracking-widest text-white/40">Hızlı İmalat</div>
+            </div>
+
+            <div class="service-card p-10 rounded-sm flex flex-col justify-between">
+                <div>
+                    <div class="text-yellow-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-6">Final</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase tracking-tighter">Son İşlemler</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Zımparalama, astar, boyama ve kimyasal yüzey pürüzsüzleştirme ile parçalarınızı son kullanıcı ürünü kalitesine getiriyoruz.</p>
+                </div>
+                <div class="mt-8 text-xs font-bold uppercase tracking-widest text-white/40">Premium Finish</div>
+            </div>
+
+            <div class="service-card p-10 rounded-sm flex flex-col justify-between">
+                <div>
+                    <div class="text-yellow-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-6">Strateji</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase tracking-tighter">Teknik Danışmanlık</h3>
+                    <p class="text-gray-400 font-light leading-relaxed">Projeniz için en uygun baskı teknolojisini ve malzemeyi seçiyoruz. Üretilebilirlik analizi ile fire oranınızı düşürüyoruz.</p>
+                </div>
+                <div class="mt-8 text-xs font-bold uppercase tracking-widest text-white/40">Mühendislik Desteği</div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-zinc-950 py-20 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <img src="img/icon negatif.png" class="h-12 mx-auto mb-8 opacity-40">
+            <h2 class="text-3xl font-bold uppercase mb-4 italic tracking-tighter">Üretime Başlayalım</h2>
+            <div class="text-xl font-bold mb-4 tracking-widest text-white uppercase">info@izmir3d.com</div>
+            <a href="iletisim.html" class="inline-block mt-6 border border-white px-12 py-4 font-bold uppercase text-xs hover:bg-white hover:text-black transition duration-300">İletişime Geç</a>
+            <div class="text-[10px] text-gray-700 tracking-[0.4em] uppercase mt-16">
+                &copy; 2026 İZMİR3D | VULCA WORKS EKOSİSTEMİ
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+    </script>
+</body>
+</html>
