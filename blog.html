@@ -21,6 +21,9 @@
         #overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
         #overlay.open { opacity: 1; pointer-events: auto; }
         .blog-card:hover img { transform: scale(1.05); }
+        /* Yeni eklenen blogların yumuşak gelmesi için */
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="antialiased">
@@ -65,7 +68,7 @@
                 <a href="index.html" class="text-gray-400 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition whitespace-nowrap">Ana Sayfa</a>
                 <a href="hizmetlerimiz.html" class="text-gray-400 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition whitespace-nowrap">Hizmetler</a>
                 <a href="hakkimizda.html" class="text-gray-400 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition whitespace-nowrap">Hakkımızda</a>
-                <a href="blog.html" class="text-white border-b-2 border-white pb-1 transition whitespace-nowrap">Blog</a>
+                <a href="blog.html" class="text-yellow-400 border-b-2 border-yellow-400 pb-1 transition whitespace-nowrap">Blog</a>
             </nav>
 
             <div class="flex-1 flex justify-end items-center">
@@ -90,7 +93,7 @@
             <a href="index.html" class="text-gray-400 hover:text-white flex justify-between">Ana Sayfa <span class="text-yellow-400">></span></a>
             <a href="hizmetlerimiz.html" class="text-gray-400 hover:text-white flex justify-between">Hizmetlerimiz <span class="text-yellow-400">></span></a>
             <a href="hakkimizda.html" class="text-gray-400 hover:text-white flex justify-between">Hakkımızda <span class="text-yellow-400">></span></a>
-            <a href="blog.html" class="text-white flex justify-between">Blog & Rehber <span class="text-yellow-400">></span></a>
+            <a href="blog.html" class="text-yellow-400 flex justify-between">Blog & Rehber <span class="text-yellow-400">></span></a>
             <a href="https://wa.me/905078423535" class="text-gray-400 hover:text-white flex justify-between">İletişim <span class="text-yellow-400">></span></a>
         </div>
 
@@ -114,9 +117,9 @@
     </section>
 
     <main class="max-w-7xl mx-auto px-6 py-24">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="blog-container">
             
-            <a href="#" class="block group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card">
+            <a href="blog-detay.html" class="block group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card">
                 <div class="overflow-hidden aspect-video border-b border-[#1a1a1a]">
                     <img src="img/12.jpeg" class="w-full h-full object-cover transition duration-500">
                 </div>
@@ -131,7 +134,7 @@
                 </div>
             </a>
 
-            <a href="#" class="block group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card">
+            <a href="blog-detay.html" class="block group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card">
                 <div class="overflow-hidden aspect-video border-b border-[#1a1a1a]">
                     <img src="img/10.jpeg" class="w-full h-full object-cover transition duration-500">
                 </div>
@@ -146,7 +149,7 @@
                 </div>
             </a>
 
-            <a href="#" class="block group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card">
+            <a href="blog-detay.html" class="block group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card">
                 <div class="overflow-hidden aspect-video border-b border-[#1a1a1a]">
                     <img src="img/11.jpeg" class="w-full h-full object-cover transition duration-500">
                 </div>
@@ -161,7 +164,7 @@
                 </div>
             </a>
 
-            <a href="#" class="block group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card">
+            <a href="blog-detay.html" class="block group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card">
                 <div class="overflow-hidden aspect-video border-b border-[#1a1a1a]">
                     <img src="img/13.jpeg" class="w-full h-full object-cover transition duration-500">
                 </div>
@@ -176,7 +179,7 @@
                 </div>
             </a>
 
-            <a href="#" class="block group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card">
+            <a href="blog-detay.html" class="block group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card">
                 <div class="overflow-hidden aspect-video border-b border-[#1a1a1a]">
                     <img src="img/14.jpeg" class="w-full h-full object-cover transition duration-500">
                 </div>
@@ -191,7 +194,7 @@
                 </div>
             </a>
 
-            <a href="#" class="block group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card">
+            <a href="blog-detay.html" class="block group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card">
                 <div class="overflow-hidden aspect-video border-b border-[#1a1a1a]">
                     <img src="img/15.jpeg" class="w-full h-full object-cover transition duration-500">
                 </div>
@@ -206,6 +209,54 @@
                 </div>
             </a>
 
+            <a href="blog-detay.html" class="hidden extra-blog group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card fade-in">
+                <div class="overflow-hidden aspect-video border-b border-[#1a1a1a]">
+                    <img src="img/3.jpeg" class="w-full h-full object-cover transition duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-yellow-400 text-[10px] font-bold uppercase tracking-widest">Yerel Üretim</span>
+                        <span class="text-gray-500 text-[10px] font-medium">10 Mart 2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3 leading-snug group-hover:text-yellow-400 transition">İzmir Karabağlar ve Gaziemir Bölgesinde Fason 3D Üretim Yapan Yerler</h3>
+                    <p class="text-gray-400 font-light text-sm line-clamp-3 mb-4">İzmir içi fason üretim ihtiyaçlarınızda lojistik avantajımız ve hızlı teslimat ağımızla işletmenizin yanındayız.</p>
+                    <span class="text-white text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:text-yellow-400 transition">Yazıyı Oku →</span>
+                </div>
+            </a>
+
+            <a href="blog-detay.html" class="hidden extra-blog group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card fade-in">
+                <div class="overflow-hidden aspect-video border-b border-[#1a1a1a]">
+                    <img src="img/4.jpeg" class="w-full h-full object-cover transition duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-yellow-400 text-[10px] font-bold uppercase tracking-widest">Makine Parkuru</span>
+                        <span class="text-gray-500 text-[10px] font-medium">2 Mart 2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3 leading-snug group-hover:text-yellow-400 transition">Bambu Lab Yazıcılar ile İzmir'de Aynı Gün Prototip Teslimatı</h3>
+                    <p class="text-gray-400 font-light text-sm line-clamp-3 mb-4">Sektörün en hızlı cihazları olan Bambu Lab serisi ile acil parça ve prototip ihtiyaçlarınıza aynı gün çözüm üretiyoruz.</p>
+                    <span class="text-white text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:text-yellow-400 transition">Yazıyı Oku →</span>
+                </div>
+            </a>
+
+            <a href="blog-detay.html" class="hidden extra-blog group bg-[#0a0a0a] border border-[#1a1a1a] hover:border-yellow-400 transition duration-300 blog-card fade-in">
+                <div class="overflow-hidden aspect-video border-b border-[#1a1a1a]">
+                    <img src="img/5.jpeg" class="w-full h-full object-cover transition duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-yellow-400 text-[10px] font-bold uppercase tracking-widest">Endüstri</span>
+                        <span class="text-gray-500 text-[10px] font-medium">18 Şubat 2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3 leading-snug group-hover:text-yellow-400 transition">Ege Bölgesi Sanayisi İçin 3D Baskının Maliyet Avantajları</h3>
+                    <p class="text-gray-400 font-light text-sm line-clamp-3 mb-4">Kalıp masraflarını sıfırlayan, stok maliyetini düşüren ve sanayi firmalarına hız kazandıran 3D baskı teknolojisinin avantajları.</p>
+                    <span class="text-white text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:text-yellow-400 transition">Yazıyı Oku →</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="text-center mt-16">
+            <button id="load-more-btn" class="inline-block bg-transparent border border-white text-white px-10 py-4 font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition duration-300">Daha Fazla Göster</button>
         </div>
     </main>
 
@@ -250,6 +301,7 @@
     </footer>
 
     <script>
+        // Mobil Menü Mantığı
         const btnOpen = document.getElementById('menu-open');
         const btnClose = document.getElementById('menu-close');
         const sideMenu = document.getElementById('side-menu');
@@ -265,6 +317,7 @@
         btnClose.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
 
+        // Ticker Animasyonu
         const messages = [
             '<span class="text-yellow-400">KALİTE:</span> PİYASADAKİ EN İYİ MAKİNELER VE FİLAMENTLER',
             '<span class="text-white">HIZLI ÜRETİM:</span> ÖLÇÜLERE TAM UYGUN VE KUSURSUZ',
@@ -286,6 +339,27 @@
                 mTicker.style.opacity = 1;
             }, 400);
         }, 4000);
+
+        // Daha Fazla Göster Mantığı
+        const loadMoreBtn = document.getElementById('load-more-btn');
+        const extraBlogs = document.querySelectorAll('.extra-blog');
+        const itemsToLoad = 3; // Her tıklamada 3 tane yükle
+
+        loadMoreBtn.addEventListener('click', () => {
+            let loaded = 0;
+            for(let i = 0; i < extraBlogs.length; i++) {
+                if(extraBlogs[i].classList.contains('hidden') && loaded < itemsToLoad) {
+                    extraBlogs[i].classList.remove('hidden');
+                    // Block olarak göster, grid yapısını bozmasın
+                    extraBlogs[i].classList.add('block');
+                    loaded++;
+                }
+            }
+            // Eğer açılacak gizli kart kalmadıysa butonu sakla
+            if(document.querySelectorAll('.extra-blog.hidden').length === 0) {
+                loadMoreBtn.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
