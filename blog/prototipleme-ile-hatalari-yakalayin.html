@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipleme ile Hataları Üretim Öncesi Yakalayın | İzmir3D Blog</title>
+    <link rel="icon" type="image/png" href="../img/favicon negatif.png">
+    <meta name="description" content="Seri üretime ve kalıp aşamasına geçmeden önce 3D baskı ile prototipleme yaparak on binlerce liralık zarardan nasıl kurtulacağınızı öğrenin.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; overflow-x: hidden; }
+        .nav-glass { background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(12px); }
+        .ticker-text { transition: opacity 0.4s ease-in-out; }
+        .brand-item { display: flex; align-items: center; gap: 8px; cursor: pointer; overflow: hidden; }
+        .brand-text { max-width: 0; opacity: 0; white-space: nowrap; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-size: 11px; font-weight: 700; letter-spacing: 2px; }
+        .brand-item:hover .brand-text { max-width: 150px; opacity: 1; }
+        .brand-icon { width: 18px; height: 18px; object-fit: contain; opacity: 0.6; transition: 0.3s; filter: grayscale(100%) brightness(200%); }
+        .brand-item:hover .brand-icon { opacity: 1; }
+        #side-menu { transform: translateX(-100%); transition: transform 0.3s ease-in-out; }
+        #side-menu.open { transform: translateX(0); }
+        #overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        #overlay.open { opacity: 1; pointer-events: auto; }
+        
+        /* SEO Uyumlu Makale Tipografisi */
+        .article-content p { margin-bottom: 1.5rem; color: #a1a1aa; line-height: 1.8; font-weight: 300; font-size: 1.05rem;}
+        .article-content h2 { font-size: 1.75rem; font-weight: 700; color: #fff; margin-top: 3rem; margin-bottom: 1.5rem; letter-spacing: -0.025em; }
+        .article-content h3 { font-size: 1.25rem; font-weight: 600; color: #facc15; margin-top: 2rem; margin-bottom: 1rem; }
+        .article-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; color: #a1a1aa; font-weight: 300; }
+        .article-content li { margin-bottom: 0.5rem; }
+        .article-content strong { color: #fff; font-weight: 600; }
+        .article-content a { color: #facc15; text-decoration: underline; text-decoration-color: rgba(250, 204, 21, 0.4); text-underline-offset: 4px; transition: all 0.3s; }
+        .article-content a:hover { color: #fff; text-decoration-color: #fff; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="hidden md:flex justify-between items-center bg-[#111] px-6 py-3 border-b border-[#222]">
+        <div class="w-1/3"></div>
+        <div class="w-1/3 text-center text-xs tracking-widest text-gray-300 ticker-text uppercase font-bold" id="desktop-ticker">
+            <span class="text-yellow-400">KALİTE:</span> EN İYİ MAKİNELER VE FİLAMENTLER
+        </div>
+        <div class="w-1/3 flex justify-end items-center gap-5">
+            <a href="#" class="brand-item">
+                <img src="../img/icon3 negatif.png" class="brand-icon" alt="Vulca">
+                <span class="brand-text text-gray-400 hover:text-white">VULCA WORKS</span>
+            </a>
+            <div class="w-[2px] h-4 bg-yellow-400 opacity-80"></div>
+            <a href="#" class="brand-item">
+                <img src="../img/icon2 negatif.png" class="brand-icon" alt="Üretim">
+                <span class="brand-text text-gray-400 hover:text-white">ÜRETİM 3D</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="md:hidden bg-[#111] py-2 text-center text-[10px] tracking-widest text-gray-300 border-b border-[#222] ticker-text uppercase font-bold" id="mobile-ticker">
+        <span class="text-yellow-400">KALİTE:</span> EN İYİ MAKİNELER VE FİLAMENTLER
+    </div>
+
+    <header class="sticky top-0 z-40 nav-glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex-1 flex justify-start md:hidden">
+                <button id="menu-open" class="text-white focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+            <a href="../index.html" class="flex-shrink-0 flex items-center gap-3 justify-center md:justify-start md:flex-1">
+                <img src="../img/icon negatif.png" alt="İkon" class="h-6 md:h-8 opacity-90">
+                <img src="../img/logo negatif.png" alt="İzmir3D" class="h-4 md:h-5">
+            </a>
+            <nav class="hidden md:flex flex-1 justify-center gap-8 text-sm font-bold tracking-widest uppercase">
+                <a href="../index.html" class="text-gray-400 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition whitespace-nowrap">Ana Sayfa</a>
+                <a href="../hizmetlerimiz.html" class="text-gray-400 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition whitespace-nowrap">Hizmetler</a>
+                <a href="../hakkimizda.html" class="text-gray-400 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition whitespace-nowrap">Hakkımızda</a>
+                <a href="../blog.html" class="text-yellow-400 border-b-2 border-yellow-400 pb-1 transition whitespace-nowrap">Blog</a>
+                <a href="../iletisim.html" class="text-gray-400 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition whitespace-nowrap">İletişim</a>
+            </nav>
+            <div class="flex-1 flex justify-end items-center">
+                <a href="https://wa.me/905078423535" class="border border-white/20 px-5 py-2.5 text-[11px] font-bold uppercase tracking-widest hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition flex items-center gap-2">
+                    <svg class="w-4 h-4 md:inline hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    <span class="hidden md:inline">Teklif Al</span>
+                    <span class="md:hidden">WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div id="overlay" class="fixed inset-0 bg-black/80 z-50 backdrop-blur-sm"></div>
+    <div id="side-menu" class="fixed top-0 left-0 h-full w-[85%] max-w-sm bg-[#0a0a0a] z-50 border-r border-white/10 flex flex-col">
+        <div class="p-6 border-b border-white/10 flex justify-between items-center">
+            <span class="text-xs font-bold tracking-widest uppercase text-gray-500">Menü</span>
+            <button id="menu-close" class="text-gray-400 hover:text-white">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex flex-col p-6 gap-6 text-sm font-bold tracking-widest uppercase flex-grow">
+            <a href="../index.html" class="text-gray-400 hover:text-white flex justify-between">Ana Sayfa <span class="text-yellow-400">></span></a>
+            <a href="../hizmetlerimiz.html" class="text-gray-400 hover:text-white flex justify-between">Hizmetlerimiz <span class="text-yellow-400">></span></a>
+            <a href="../hakkimizda.html" class="text-gray-400 hover:text-white flex justify-between">Hakkımızda <span class="text-yellow-400">></span></a>
+            <a href="../blog.html" class="text-yellow-400 flex justify-between">Blog & Rehber <span class="text-yellow-400">></span></a>
+            <a href="../iletisim.html" class="text-gray-400 hover:text-white flex justify-between">İletişim <span class="text-yellow-400">></span></a>
+        </div>
+        <div class="p-6 border-t border-white/10 bg-black flex items-center justify-around">
+            <a href="#" class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white">
+                <img src="../img/icon3 negatif.png" class="w-5 h-5 opacity-70"> Vulca Works
+            </a>
+            <div class="w-[2px] h-6 bg-yellow-400 opacity-80"></div>
+            <a href="#" class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white">
+                <img src="../img/icon2 negatif.png" class="w-5 h-5 opacity-70"> Üretim 3D
+            </a>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col lg:flex-row gap-16">
+        
+        <article class="lg:w-2/3">
+            
+            <div class="flex items-center gap-3 mb-8 text-[10px] uppercase tracking-widest font-bold flex-wrap">
+                <a href="../index.html" class="text-gray-500 hover:text-white transition">Ana Sayfa</a>
+                <span class="text-gray-700">></span>
+                <a href="../blog.html" class="text-gray-500 hover:text-white transition">Blog</a>
+                <span class="text-gray-700">></span>
+                <span class="text-yellow-400">Sektör</span>
+            </div>
+
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tighter mb-6 leading-tight">Prototipleme ile Hataları Üretim Öncesi Yakalayın</h1>
+            
+            <div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-gray-500 mb-8 border-b border-white/10 pb-6">
+                <span>5 Nisan 2026</span>
+                <span class="w-1 h-1 rounded-full bg-yellow-400"></span>
+                <span>Okuma Süresi: 3 Dk</span>
+            </div>
+
+            <div class="w-full aspect-video border border-white/10 bg-zinc-900 mb-12">
+                <img src="../img/14.jpeg" alt="3D Prototipleme" class="w-full h-full object-cover">
+            </div>
+
+            <div class="article-content">
+                <p>Bir ürün fikriniz var, mühendisleriniz günlerce bilgisayar başında CAD çizimlerini tamamladı ve artık seri üretime (enjeksiyon kalıplama veya CNC) geçmeye hazırsınız. Ancak durun! Ekranda kusursuz görünen o parça, gerçek dünyada diğer mekanizmalarla tam uyum sağlayacak mı? İşte 3D yazıcı ile <strong>prototipleme</strong> tam bu noktada hayat kurtarır.</p>
+
+                <h2>Prototipleme Neden Bu Kadar Önemli?</h2>
+                <p>Özellikle İzmir, Manisa OSB ve Kemalpaşa gibi dev sanayi bölgelerindeki fabrikalarda, kalıp maliyetleri yüz binlerce lirayı bulabilmektedir. Eğer kalıp açıldıktan sonra üründe 1 milimetrelik bile bir ölçü hatası veya montaj problemi fark edilirse, o kalıp çöp olur veya çok pahalı revizyonlara girer.</p>
+                
+                <p>3D baskı ile tasarımınızı fiziksel bir objeye dönüştürmek, size seri üretime geçmeden önce şu fırsatları sunar:</p>
+                <ul>
+                    <li><strong>Montaj ve Tolerans Testi:</strong> Parçalar birbirine tam geçiyor mu? Cıvata delikleri doğru hizada mı? Tüm bunları dokunarak test edebilirsiniz.</li>
+                    <li><strong>Ergonomi Testi:</strong> Tasarladığınız bir el aleti veya kulp ele tam oturuyor mu? Ağırlık merkezi doğru mu?</li>
+                    <li><strong>Maliyet ve Zaman Tasarrufu:</strong> Hataları bilgisayar ekranında değil, plastik bir prototip üzerinde yakalayarak kalıp maliyetlerini sıfıra indirirsiniz.</li>
+                </ul>
+
+                <h2>Prototip İçin Neden Bizi Seçmelisiniz?</h2>
+                <p>İzmir3D olarak, <a href="../hizmetlerimiz.html">hızlı prototipleme</a> konusunda iddialıyız. Bambu Lab X1 Carbon gibi endüstriyel standartlardaki yazıcılarımızla, tasarımlarınızı 0.1mm hassasiyetle ve aynı gün içerisinde üretiyoruz. Parçanızı elinize aldığınızda, nihai ürüne en yakın yüzey kalitesini ve sağlamlığı hissedersiniz.</p>
+
+                <div class="my-10 border-l-4 border-yellow-400 pl-6 py-4 bg-[#0a0a0a]">
+                    <h3 class="mt-0 text-yellow-400 text-sm tracking-widest uppercase mb-2">Hızlı Karar Alın</h3>
+                    <p class="mb-0 text-white font-medium text-base">Yatırımcılarınıza veya müşterilerinize projenizi anlatırken sadece bilgisayar ekranındaki çizimleri göstermek yerine, 3 boyutlu basılmış ve boyanmış fiziksel bir prototip sunmak, projenizin kabul edilme ihtimalini inanılmaz derecede artırır.</p>
+                </div>
+
+                <h2>Sürecimiz Nasıl İşler?</h2>
+                <p>Elinizdeki CAD dosyasını (.STEP veya .STL) bize iletmeniz yeterlidir. Eğer tasarım aşamasında değişiklik yapmanız gerekirse, <a href="3d-tasarim-ve-cizim-surecimiz.html">kendi tasarım ekibimizle</a> revizyonlarınızı anında yapıp yeni prototipi basabiliriz.</p>
+                
+                <p>Siz de on binlerce liralık zarardan dönmek ve projelerinizi güvenle seri üretime taşımak için <a href="../iletisim.html">bizimle iletişime geçebilirsiniz.</a></p>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex flex-wrap gap-3">
+                    <span class="bg-[#111] border border-white/5 px-3 py-1 text-[10px] uppercase font-bold text-gray-400">Prototip</span>
+                    <span class="bg-[#111] border border-white/5 px-3 py-1 text-[10px] uppercase font-bold text-gray-400">Seri Üretim</span>
+                    <span class="bg-[#111] border border-white/5 px-3 py-1 text-[10px] uppercase font-bold text-gray-400">Ar-Ge</span>
+                    <span class="bg-[#111] border border-white/5 px-3 py-1 text-[10px] uppercase font-bold text-gray-400">İzmir Sanayi</span>
+                </div>
+            </div>
+
+        </article>
+
+        <aside class="lg:w-1/3">
+            <div class="sticky top-28 space-y-10">
+                
+                <div class="bg-yellow-400 p-8 text-black">
+                    <h3 class="text-xl font-extrabold uppercase tracking-tighter mb-3">Prototip Üretimi</h3>
+                    <p class="font-medium text-sm mb-6">Ar-Ge projeleriniz ve numune üretimleriniz için aynı gün içinde hassas baskı hizmeti alın.</p>
+                    <a href="https://wa.me/905078423535" class="block w-full text-center bg-black text-white font-bold uppercase tracking-widest text-xs py-4 hover:bg-[#222] transition">WhatsApp'tan Yazın</a>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-6 border-b border-white/10 pb-2">İlginizi Çekebilir</h4>
+                    <div class="space-y-6">
+                        
+                        <a href="3d-tasarim-ve-cizim-surecimiz.html" class="group flex gap-4 items-center">
+                            <div class="w-20 h-20 flex-shrink-0 bg-zinc-900 overflow-hidden">
+                                <img src="../img/13.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            </div>
+                            <div>
+                                <span class="text-yellow-400 text-[9px] font-bold uppercase tracking-widest block mb-1">Tasarım</span>
+                                <h5 class="text-sm font-bold text-gray-300 group-hover:text-white transition leading-snug">Fikirden Gerçeğe: 3D Tasarım ve Çizim Sürecimiz</h5>
+                            </div>
+                        </a>
+
+                        <a href="izmirde-toplu-3d-uretim.html" class="group flex gap-4 items-center">
+                            <div class="w-20 h-20 flex-shrink-0 bg-zinc-900 overflow-hidden">
+                                <img src="../img/12.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            </div>
+                            <div>
+                                <span class="text-yellow-400 text-[9px] font-bold uppercase tracking-widest block mb-1">Rehber</span>
+                                <h5 class="text-sm font-bold text-gray-300 group-hover:text-white transition leading-snug">İzmir'de Uygun Fiyatlı Toplu 3D Üretim Nasıl Yapılır?</h5>
+                            </div>
+                        </a>
+
+                        <a href="dogru-filament-secimi.html" class="group flex gap-4 items-center">
+                            <div class="w-20 h-20 flex-shrink-0 bg-zinc-900 overflow-hidden">
+                                <img src="../img/10.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            </div>
+                            <div>
+                                <span class="text-yellow-400 text-[9px] font-bold uppercase tracking-widest block mb-1">Malzeme</span>
+                                <h5 class="text-sm font-bold text-gray-300 group-hover:text-white transition leading-snug">Doğru Filament Seçimi: PLA mı, PETG mi?</h5>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+    </main>
+
+    <footer class="bg-black py-16 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <img src="../img/icon negatif.png" class="h-6 opacity-90">
+                    <img src="../img/logo negatif.png" class="h-4">
+                </div>
+                <p class="text-gray-500 text-xs font-light leading-relaxed">Piyasadaki en iyi cihazlarla uygun fiyata 3D baskı, tasarım ve toplu üretim atölyesi.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Kurumsal</h4>
+                <div class="flex flex-col gap-3 text-sm text-gray-400 font-medium">
+                    <a href="../hakkimizda.html" class="hover:text-yellow-400 transition">Hakkımızda</a>
+                    <a href="../hizmetlerimiz.html" class="hover:text-yellow-400 transition">Hizmetlerimiz</a>
+                    <a href="../blog.html" class="text-yellow-400 transition">Blog & Rehber</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Hizmetlerimiz</h4>
+                <div class="flex flex-col gap-3 text-sm text-gray-400 font-medium">
+                    <span>Adetli ve Toplu Üretim</span>
+                    <span>Tasarım ve Çizim</span>
+                    <span>Çok Renkli Baskı</span>
+                    <span>Özel Proje Üretimi</span>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">İletişim</h4>
+                <div class="flex flex-col gap-3 text-sm text-gray-400 font-medium">
+                    <span class="text-yellow-400 font-bold">+90 507 842 35 35</span>
+                    <span>Kahramanlar Caddesi 35410<br>Gaziemir / İzmir</span>
+                    <a href="https://wa.me/905078423535" class="mt-4 border border-white/20 text-center py-2 text-white hover:bg-yellow-400 hover:text-black transition uppercase text-xs font-bold tracking-widest">WhatsApp'tan Yazın</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-600 tracking-widest uppercase font-bold">
+            <p>&copy; 2026 İZMİR3D | VULCA WORKS EKOSİSTEMİ. TÜM HAKLARI SAKLIDIR.</p>
+        </div>
+    </footer>
+
+    <script>
+        const btnOpen = document.getElementById('menu-open');
+        const btnClose = document.getElementById('menu-close');
+        const sideMenu = document.getElementById('side-menu');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            sideMenu.classList.toggle('open');
+            overlay.classList.toggle('open');
+            document.body.style.overflow = sideMenu.classList.contains('open') ? 'hidden' : '';
+        }
+
+        btnOpen.addEventListener('click', toggleMenu);
+        btnClose.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        const messages = [
+            '<span class="text-yellow-400">KALİTE:</span> PİYASADAKİ EN İYİ MAKİNELER VE FİLAMENTLER',
+            '<span class="text-white">HIZLI ÜRETİM:</span> ÖLÇÜLERE TAM UYGUN VE KUSURSUZ',
+            '<span class="text-yellow-400">TASARIM:</span> 3D ÇİZİM VE MODELLEME DESTEĞİ',
+            '<span class="text-white">ÇOK RENKLİ:</span> YÜKSEK KALİTELİ BASKI SEÇENEKLERİ'
+        ];
+        let msgIndex = 0;
+        const dTicker = document.getElementById('desktop-ticker');
+        const mTicker = document.getElementById('mobile-ticker');
+
+        setInterval(() => {
+            msgIndex = (msgIndex + 1) % messages.length;
+            dTicker.style.opacity = 0;
+            mTicker.style.opacity = 0;
+            setTimeout(() => {
+                dTicker.innerHTML = messages[msgIndex];
+                mTicker.innerHTML = messages[msgIndex];
+                dTicker.style.opacity = 1;
+                mTicker.style.opacity = 1;
+            }, 400);
+        }, 4000);
+    </script>
+</body>
+</html>
