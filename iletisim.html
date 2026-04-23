@@ -20,8 +20,8 @@
         #side-menu.open { transform: translateX(0); }
         #overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
         #overlay.open { opacity: 1; pointer-events: auto; }
-        .input-field { background: #111; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
-        .input-field:focus { border-color: #facc15; outline: none; background: #1a1a1a; }
+        /* Harita Filtresi (Dark Mode Efekti) */
+        .dark-map { filter: grayscale(100%) invert(92%) contrast(83%); }
     </style>
 </head>
 <body class="antialiased">
@@ -50,7 +50,6 @@
 
     <header class="sticky top-0 z-40 nav-glass border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            
             <div class="flex-1 flex justify-start md:hidden">
                 <button id="menu-open" class="text-white focus:outline-none">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -66,7 +65,7 @@
                 <a href="index.html" class="text-gray-400 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition whitespace-nowrap">Ana Sayfa</a>
                 <a href="hizmetlerimiz.html" class="text-gray-400 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition whitespace-nowrap">Hizmetler</a>
                 <a href="hakkimizda.html" class="text-gray-400 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition whitespace-nowrap">Hakkımızda</a>
-                <a href="blog.html" class="text-yellow-400 hover:text-yellow-300 border-b-2 border-transparent hover:border-yellow-400 pb-1 transition whitespace-nowrap">Blog</a>
+                <a href="blog.html" class="text-gray-400 hover:text-white border-b-2 border-transparent hover:border-yellow-400 pb-1 transition whitespace-nowrap">Blog</a>
                 <a href="iletisim.html" class="text-white border-b-2 border-white pb-1 transition whitespace-nowrap">İletişim</a>
             </nav>
 
@@ -158,24 +157,18 @@
                 </div>
             </div>
 
-            <div class="bg-[#0a0a0a] border border-[#1a1a1a] p-8 md:p-12 relative">
-                <div class="absolute top-0 right-0 w-16 h-16 bg-yellow-400 opacity-10 rounded-bl-full"></div>
-                <h3 class="text-2xl font-bold uppercase tracking-tighter mb-8 italic">Teklif Formu</h3>
-                <form action="https://formspree.io/f/XXXXXX" method="POST" class="space-y-6">
-                    <div>
-                        <label class="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-2">Adınız Soyadınız</label>
-                        <input type="text" name="name" required class="w-full px-4 py-3 text-sm input-field text-white">
-                    </div>
-                    <div>
-                        <label class="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-2">E-Posta Adresiniz</label>
-                        <input type="email" name="email" required class="w-full px-4 py-3 text-sm input-field text-white">
-                    </div>
-                    <div>
-                        <label class="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-2">Proje veya İhtiyaç Detayı</label>
-                        <textarea name="message" rows="5" placeholder="Üretilecek parça adeti, istenilen renk vb. detayları yazabilirsiniz..." required class="w-full px-4 py-3 text-sm input-field text-white"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-yellow-400 text-black font-bold uppercase py-4 text-xs tracking-widest hover:bg-white transition duration-300">Mesajı Gönder</button>
-                </form>
+            <div class="bg-[#0a0a0a] border border-[#1a1a1a] p-2 relative h-full min-h-[400px]">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-yellow-400 opacity-10 rounded-bl-full z-10 pointer-events-none"></div>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100062.77884814143!2d27.067341355030263!3d38.3242639420089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbdfb2344791db%3A0x8e8334a1795c4cf8!2sGaziemir%2F%C4%B0zmir!5e0!3m2!1str!2str!4v1713876000000!5m2!1str!2str" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0; min-height: 400px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="dark-map rounded-sm">
+                </iframe>
             </div>
 
         </div>
